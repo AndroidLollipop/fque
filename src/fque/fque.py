@@ -40,3 +40,7 @@ class Queue:
 
     def full(self) -> bool:
         return len(self._queue) >= self._maxsize
+
+    def qsize(self):
+        """This method is not necesarily thread safe"""
+        return len(self._queue)
