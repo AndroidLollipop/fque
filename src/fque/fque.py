@@ -11,7 +11,7 @@ class Queue:
     def __init__(self, maxsize: int = 0):
         self._maxsize = maxsize if maxsize > 0 else math.inf
         self._has_items = Event()
-        self._queue = deque(maxlen=maxsize)
+        self._queue = deque()
 
     def get(self, block: bool = True, timeout: float = None):
         if not block:
