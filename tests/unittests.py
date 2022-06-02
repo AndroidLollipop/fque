@@ -12,6 +12,14 @@ class FunctionalityTests(unittest.TestCase):
         with self.assertRaises(Empty):
             queue.get(timeout=0.1)
 
+    def test_simple_get(self):
+        queue = fque.Queue()
+        self.assertTrue(queue.empty())
+        queue.put(10)
+        self.assertFalse(queue.empty())
+        msg = queue.get()
+        self.assertEqual(10, msg)
+
     def test_get_full(self):
         queue = fque.Queue(maxsize=100)
         self.assertTrue(queue.empty())
