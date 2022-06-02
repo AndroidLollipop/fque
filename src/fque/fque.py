@@ -27,13 +27,13 @@ class Queue:
             return self.get(block=block, timeout=timeout)
 
     def put(self, item):
-        if not self._has_items.is_set():
-            self._has_items.set()
-
         if len(self._queue) >= self._maxsize:
             raise Full
 
-        return self._queue.append(item)
+        self._queue.append(item)
+
+        if not self._has_items.is_set():
+            self._has_items.set()
 
     def empty(self) -> bool:
         return not self._queue
