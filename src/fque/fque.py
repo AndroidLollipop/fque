@@ -35,6 +35,15 @@ class Queue:
         if not self._has_items.is_set():
             self._has_items.set()
 
+    def putleft(self, item):
+        if len(self._queue) >= self._maxsize:
+            raise Full
+
+        self._queue.appendleft(item)
+
+        if not self._has_items.is_set():
+            self._has_items.set()
+
     def empty(self) -> bool:
         return not self._queue
 
