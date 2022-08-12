@@ -6,3 +6,4 @@ implementing just the minimum needed locks.
 Author: Perry Technologies
 """
 from fque.fque import Queue
+from fque.limited_simple_queue import LimitedSimpleQueue
